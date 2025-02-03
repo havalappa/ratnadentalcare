@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratna Dental Care</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        form { max-width: 400px; margin: auto; }
+        input, textarea { width: 100%; margin: 10px 0; padding: 8px; }
+        button { background-color: #28a745; color: white; padding: 10px; border: none; cursor: pointer; }
+        img { max-width: 200px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <img src="IMG_1873.jpg" alt="Ratna Dental Care Logo">
+    <h2>Ratna Dental Care - Appointment Form</h2>
+    <form id="appointmentForm">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="number" id="age" placeholder="Age" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        <input type="text" id="address" placeholder="Address" required>
+        <textarea id="complaint" placeholder="Chief Complaint" required></textarea>
+        <button type="button" onclick="sendToWhatsApp()">Submit</button>
+    </form>
+
+    <script>
+        function sendToWhatsApp() {
+            var name = document.getElementById('name').value;
+            var age = document.getElementById('age').value;
+            var phone = document.getElementById('phone').value;
+            var address = document.getElementById('address').value;
+            var complaint = document.getElementById('complaint').value;
+            
+            var message = `Hello, I am ${name}, Age: ${age}.\nPhone: ${phone}\nAddress: ${address}\nChief Complaint: ${complaint}`;
+            
+            var whatsappUrl = `https://api.whatsapp.com/send?phone=YOUR_PHONE_NUMBER&text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
